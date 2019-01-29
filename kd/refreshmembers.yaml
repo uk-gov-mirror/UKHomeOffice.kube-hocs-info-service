@@ -1,9 +1,10 @@
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
-  name: hocs-info-service
+  name: refresh-members-cronjob
 spec:
-  schedule: "0 22 * * *"
+  schedule: "0 10 * * *"
+#  Schedule is set to 10:00 for development. Needs to change to pm for prod: "0 22 * * *"
   jobTemplate:
     spec:
       backoffLimit: 3
