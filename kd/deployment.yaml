@@ -64,17 +64,17 @@ spec:
             - name: DB_HOSTNAME
               valueFrom:
                 secretKeyRef:
-                  name: {{.KUBE_NAMESPACE}}-rds
+                  name: wcsdev-rds
                   key: endpoint
             - name: DB_NAME
               valueFrom:
                 secretKeyRef:
-                  name: {{.KUBE_NAMESPACE}}-rds
+                  name: wcsdev-rds
                   key: db_name
             - name: ROOT_DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{.KUBE_NAMESPACE}}-rds
+                  name: wcsdev-rds
                   key: password
             - name: DB_SCHEMA_NAME
               valueFrom:
