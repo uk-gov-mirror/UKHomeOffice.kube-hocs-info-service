@@ -28,7 +28,7 @@ spec:
         - name: truststore
           image: quay.io/ukhomeofficedigital/cfssl-sidekick-jks:v0.0.6
           securityContext:
-            runAsNonRoot: true
+            runAsNonRoot: false
             capabilities:
               drop:
                 - SETUID
@@ -55,7 +55,7 @@ spec:
         - name: db-initialise
           image: docker.digital.homeoffice.gov.uk/hocs-db-provision:latest
           securityContext:
-            runAsNonRoot: true
+            runAsNonRoot: false
             capabilities:
               drop:
                 - SETUID
@@ -105,7 +105,7 @@ spec:
         - name: certs
           image: quay.io/ukhomeofficedigital/cfssl-sidekick:v0.0.6
           securityContext:
-            runAsNonRoot: true
+            runAsNonRoot: false
             capabilities:
               drop:
                 - SETUID
@@ -131,7 +131,7 @@ spec:
           image: quay.io/ukhomeofficedigital/nginx-proxy:v3.4.12
           imagePullPolicy: Always
           securityContext:
-            runAsNonRoot: true
+            runAsNonRoot: false
             capabilities:
               drop:
                 - SETUID
@@ -179,7 +179,7 @@ spec:
           image: quay.io/ukhomeofficedigital/hocs-info-service:{{.VERSION}}
           imagePullPolicy: Always
           securityContext:
-            runAsNonRoot: true
+            runAsNonRoot: false
             capabilities:
               drop:
                 - SETUID
