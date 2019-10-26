@@ -28,7 +28,11 @@ spec:
         - name: truststore
           image: quay.io/ukhomeofficedigital/cfssl-sidekick-jks:v0.0.6
           securityContext:
-            runAsNonRoot: false
+            runAsNonRoot: true
+            capabilities:
+              drop:
+                - SETUID
+                - SETGID
           args:
             - --certs=/certs
             - --command=/usr/bin/create-keystore.sh /certs/tls.pem /certs/tls-key.pem /etc/ssl/certs/acp-root.crt
@@ -51,7 +55,11 @@ spec:
         - name: db-initialise
           image: docker.digital.homeoffice.gov.uk/hocs-db-provision:latest
           securityContext:
-            runAsNonRoot: false
+            runAsNonRoot: true
+            capabilities:
+              drop:
+                - SETUID
+                - SETGID
           env:
             - name: DB_HOSTNAME
               valueFrom:
@@ -119,7 +127,11 @@ spec:
           image: quay.io/ukhomeofficedigital/nginx-proxy:v3.4.12
           imagePullPolicy: Always
           securityContext:
-            runAsNonRoot: false
+            runAsNonRoot: true
+            capabilities:
+              drop:
+                - SETUID
+                - SETGID
           resources:
             limits:
               memory: 512Mi
