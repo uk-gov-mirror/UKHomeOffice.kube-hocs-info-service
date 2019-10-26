@@ -105,7 +105,11 @@ spec:
         - name: certs
           image: quay.io/ukhomeofficedigital/cfssl-sidekick:v0.0.6
           securityContext:
-            runAsNonRoot: false
+            runAsNonRoot: true
+            capabilities:
+              drop:
+                - SETUID
+                - SETGID
           args:
             - --certs=/certs
             - --domain=hocs-info-service.${KUBE_NAMESPACE}.svc.cluster.local
@@ -175,7 +179,11 @@ spec:
           image: quay.io/ukhomeofficedigital/hocs-info-service:{{.VERSION}}
           imagePullPolicy: Always
           securityContext:
-            runAsNonRoot: false
+            runAsNonRoot: true
+            capabilities:
+              drop:
+                - SETUID
+                - SETGID
           envFrom:
             - configMapRef:
                 name: hocs-queue-config
