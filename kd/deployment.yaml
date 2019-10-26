@@ -29,10 +29,6 @@ spec:
           image: quay.io/ukhomeofficedigital/cfssl-sidekick-jks:v0.0.6
           securityContext:
             runAsNonRoot: false
-            capabilities:
-              drop:
-                - SETUID
-                - SETGID
           args:
             - --certs=/certs
             - --command=/usr/bin/create-keystore.sh /certs/tls.pem /certs/tls-key.pem /etc/ssl/certs/acp-root.crt
@@ -56,10 +52,6 @@ spec:
           image: docker.digital.homeoffice.gov.uk/hocs-db-provision:latest
           securityContext:
             runAsNonRoot: false
-            capabilities:
-              drop:
-                - SETUID
-                - SETGID
           env:
             - name: DB_HOSTNAME
               valueFrom:
@@ -106,10 +98,6 @@ spec:
           image: quay.io/ukhomeofficedigital/cfssl-sidekick:v0.0.6
           securityContext:
             runAsNonRoot: false
-            capabilities:
-              drop:
-                - SETUID
-                - SETGID
           args:
             - --certs=/certs
             - --domain=hocs-info-service.${KUBE_NAMESPACE}.svc.cluster.local
@@ -132,10 +120,6 @@ spec:
           imagePullPolicy: Always
           securityContext:
             runAsNonRoot: false
-            capabilities:
-              drop:
-                - SETUID
-                - SETGID
           resources:
             limits:
               memory: 512Mi
@@ -180,10 +164,6 @@ spec:
           imagePullPolicy: Always
           securityContext:
             runAsNonRoot: false
-            capabilities:
-              drop:
-                - SETUID
-                - SETGID
           envFrom:
             - configMapRef:
                 name: hocs-queue-config
