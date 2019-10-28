@@ -39,6 +39,8 @@ cd kd
 
 kd --insecure-skip-tls-verify \
    --timeout 3m \
+   --debug \
+   --debug-templates \
     -f deployment.yaml \
     -f service.yaml \
     -f refreshmembers.yaml
