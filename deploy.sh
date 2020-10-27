@@ -52,11 +52,12 @@ elif [[ ${KUBE_NAMESPACE} == "wcs-dev" ]] ; then
     export KUBE_TOKEN=${HOCS_INFO_SERVICE_DEV_WCS}
 else
     echo "Unable to find environment: ${ENVIRONMENT}"
+    exit 1
 fi
 
 if [[ -z ${KUBE_TOKEN} ]] ; then
     echo "Failed to find a value for KUBE_TOKEN - exiting"
-    exit -1
+    exit 1
 fi
 
 cd kd
